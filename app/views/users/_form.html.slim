@@ -1,0 +1,6 @@
+= simple_form_for @resource do |f|
+  = f.input :username
+  = f.input :email
+  = f.input :password
+  = f.input :roles, as: :check_boxes, required: true, collection: User.valid_roles.map{|e| [I18n.t(e, scope: "activerecord.attributes.user.roles_values"), e]} 
+  = f.button :submit

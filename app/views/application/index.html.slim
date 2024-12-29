@@ -1,0 +1,22 @@
+- if @resource_class.try(:filters_enabled?)
+  = simple_form_for :filters, url: path_for_resource(@resource_class), wrapper: :inline_form, method: "GET", remote: true, html: { class: 'form-inline' } do |f|
+    = render partial: 'filters', locals: {f: f}
+    = f.submit "Filtruj", class: "btn btn-primary"
+table.datatable data-source="#{path_for_resource(@resource_class, format: :json, filters: params[:filters].try(:to_unsafe_h))}" 
+  thead
+    tr
+      - @resource_class.table_columns.each do |col|
+        th
+          = I18n.t(col, scope: "activerecord.attributes.#{@resource_class.to_s.downcase}")
+
+javascript:
+  $(document).ready( function () {
+    dtColumns = "#{@dt_table_columns}";
+    $('.datatable').dataTable(
+      {columns:
+        $.map(dtColumns.split(","), function( a ) {
+          return {data: a}
+        })
+      }
+    );
+  });

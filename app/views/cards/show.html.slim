@@ -1,0 +1,23 @@
+.panel.panel-default
+  .panel-body.card-block
+    .col-md-5
+      = image_tag @resource.image_url(:medium)
+    .col-md-7
+      h2= @resource.name
+      .ed-de
+        = link_to("edycja", path_for_resource(@resource, action: :edit)) if can?(:update, @resource)
+        | &nbsp;
+        = link_to("usuń", path_for_resource(@resource), method: :delete, data: {confirm: "na pewno?"}) if can?(:destroy, @resource)
+      div
+        strong Typ:
+        = @resource.card_type
+      div
+        strong Kolory:
+        = @resource.colors_s
+      div
+        strong Rzadkość:
+        = @resource.rarity_s
+      div
+        strong Opis:
+        = @resource.desc
+= render_comments

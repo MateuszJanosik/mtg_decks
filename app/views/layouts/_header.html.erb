@@ -1,0 +1,45 @@
+<nav class='navbar navbar-inverse'>
+  <div class='navbar-header'>
+    <%=link_to "MTG", root_path, class: 'navbar-brand'%>
+  </div>
+  <ul class='nav navbar-nav'>
+    <% [Card, Deck].each do |c| %>
+      <li>
+        <%= link_to I18n.t(c.to_s.downcase.pluralize), path_for_resource(c) %> 
+      </li>
+    <% end %> 
+  </ul>
+  <ul class='nav navbar-nav navbar-right'>
+    <% if @resource_class && @resource.blank? && can?(:create, @resource_class)%>
+      <li ><%= link_to "Dodaj", path_for_resource(@resource_class, action: :new) %> </li>
+    <% end %>
+    <%if user_signed_in?%>
+      <% if can? :read, User %>
+        <li>
+          <%=link_to "Użytkownicy", path_for_resource(User) %>
+        </li>
+      <%end%>
+      <li>
+        <%=link_to "Moje talie", path_for_resource(Deck, filters: {with_user_id: current_user.id}) %>
+      </li>
+      <li>
+        <%=link_to destroy_user_session_path, method: :delete do %>
+          <span class='glyphicon glyphicon-log-out'%></span>Wyloguj
+        <%end%>
+      </li>
+    <%else%>
+      <li>
+        <%=link_to  new_user_registration_path do %>
+          <span class='glyphicon glyphicon-user'%></span>Rejestracja
+        <%end%>
+      </li>
+      <li>
+        <%=link_to new_user_session_path do %>
+          <span class='glyphicon glyphicon-log-in'%></span>Zaloguj
+        <%end%>
+      </li>
+    <%end%>
+  </ul>
+</nav>
+
+

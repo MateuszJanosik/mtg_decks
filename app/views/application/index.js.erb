@@ -1,0 +1,11 @@
+var url = "<%= path_for_resource(@resource_class, format: :json, filters: @filters) %>"
+$(".datatable").data('source', url)
+$(".datatable").DataTable().clear().destroy()
+dtColumns = "<%=@dt_table_columns%>";
+$('.datatable').dataTable(
+  {columns: 
+    $.map(dtColumns.split(","), function( a ) {
+      return {data: a}
+    })
+  }
+);

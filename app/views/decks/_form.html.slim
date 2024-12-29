@@ -1,0 +1,8 @@
+= simple_form_for @resource do |f|
+  = f.input :name
+  fieldset
+    = f.simple_fields_for :deck_cards do |p|
+      = render  'deck_card_fields', f: p
+    .pull-right.mr5
+      = link_to_add_association "dodaj kartę", f, :deck_cards
+  = f.button :submit

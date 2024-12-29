@@ -36,10 +36,10 @@ gem 'active_flag'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-gem 'jquery-datatables'
+gem 'ajax-datatables-rails'
 gem 'responders'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'rmagick'
 gem 'select2-rails'
 gem 'devise'
 gem 'cancancan'
@@ -51,8 +51,8 @@ gem 'globalid'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false

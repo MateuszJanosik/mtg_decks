@@ -1,0 +1,3 @@
+= f.label :with_colors, required: false, label: I18n.t(:with_colors, scope: "activerecord.attributes.deck")
+| &nbsp;
+= f.input :with_colors, collection: Deck.colors.keys.map{|e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e]}, input_html: { multiple: true, class: 'js-select2' }

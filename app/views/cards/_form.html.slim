@@ -1,0 +1,8 @@
+= simple_form_for @resource do |f|
+  = f.input :name
+  = f.input :desc, as: :text
+  = f.input :image, as: :file
+  = f.input :rarity, collection: @resource_class.rarities.keys.map{|e| [@resource_class.human_enum_name(:rarity, e), e]}
+  = f.input :card_type, collection: @resource_class.card_types.keys
+  = f.input :colors, as: :check_boxes, collection: Card.colors.keys.map{|e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e]} 
+  = f.button :submit

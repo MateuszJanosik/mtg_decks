@@ -1,0 +1,15 @@
+h2= @resource.name
+.ed-de
+  = link_to("edycja", path_for_resource(@resource, action: :edit)) if can?(:update, @resource)
+  | &nbsp;
+  = link_to("usuń", path_for_resource(@resource), method: :delete, data: {confirm: "na pewno?"}) if can?(:destroy, @resource)
+.panel.panel-default
+  .panel-body.deck-block
+    - @cards_by_type.each do |type, col|
+      .col-md-4
+         ul 
+          strong = type
+          - col.each do |dc|
+            li 
+              = "#{dc.card_name} x#{dc.amount}"
+= render_comments
