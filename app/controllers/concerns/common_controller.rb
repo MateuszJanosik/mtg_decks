@@ -16,7 +16,6 @@ module CommonController
 
   def index
     authorize! :index, resource_class
-    @dt_table_columns = resource_class.table_columns.join(',')
     respond_with(collection) do |format|
       format.json { render_datatable }
       format.js { render_index_js }

@@ -1,32 +1,30 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
-import "jquery"
-import "select2"
-import $ from 'jquery';
-import 'datatables.net-bs5';
-import 'datatables.net-bs5/css/dataTables.bootstrap5.css';
+import "@hotwired/turbo-rails";
+import "controllers";
+import "jquery";
+import "select2";
+import "datatables.net";
+import "datatables.net-bs5";
 
 $(document).on("turbo:load", function() {
   $(".datatable").each(function() {
     const table = $(this);
-    const ajaxUrl = table.data('url')
-    const columns = table.data('columns')
+    const ajaxUrl = table.data('url');
+    const columns = table.data('columns');
 
-    table.DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: ajaxUrl,
-      columns: columns,
-      responsive: true
-    });
+    if (ajaxUrl && columns) {
+      table.DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: ajaxUrl,
+        columns: columns,
+        responsive: true
+      });
+    }
   });
-});
 
-$(document).on('turbolinks:load', function(event){
   $('.js-select2').select2();
 });
 
-$(document).on('cocoon:after-insert', function(e, inserted) {
+document.addEventListener('cocoon:after-insert', function(e) {
   $('.js-select2').select2();
-})
+});

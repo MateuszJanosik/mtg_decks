@@ -1,27 +1,27 @@
 class CardDatatable < AjaxDatatablesRails::ActiveRecord
-
   def view_columns
-    # Declare strings in this format: ModelName.column_name
-    # or in aliased_join_table.column_name format
     @view_columns ||= {
-      # id: { source: "User.id", cond: :eq },
-      # name: { source: "User.name", cond: :like }
+      name: { source: "Card.name", cond: :like },
+      desc: { source: "Card.desc", cond: :like },
+      colors: { source: "Card.colors" },
+      card_type: { source: "Card.card_type" },
+      rarity: { source: "Card.rarity" }
     }
   end
 
   def data
     records.map do |record|
       {
-        # example:
-        # id: record.id,
-        # name: record.name
+        name: record.name,
+        desc: record.desc,
+        colors: record.colors,
+        card_type: record.card_type,
+        rarity: record.rarity
       }
     end
   end
 
   def get_raw_records
-    # insert query here
-    # User.all
+    Card.all
   end
-
 end

@@ -17,7 +17,13 @@ class Card < ApplicationRecord
   scope :with_card_type, ->(v) { where(card_type: [v].flatten.reject(&:blank?)) }
 
   def self.table_columns
-    [:name_with_link, :desc, :colors_s, :card_type, :rarity_s]
+    [
+      { data: "name" },
+      { data: "desc" },
+      { data: "colors" },
+      { data: "card_type" },
+      { data: "rarity" }
+    ].to_json
   end
 
   def colors_s
