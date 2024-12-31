@@ -18,30 +18,11 @@ module CommonController
     authorize! :index, resource_class
     respond_with(collection) do |format|
       format.json { render_datatable }
-      format.js { render_index_js }
       format.html
     end
   end
 
-  def render_index_js
-    @filters = params[:filters].to_unsafe_h
-  end
-
   def render_datatable
-    col = collection
-    unless params[:filters].blank?
-      params[:filters].to_unsafe_h.map do |k,v|
-        if col.respond_to?(k) && k.to_s.starts_with?('with_') && ![v].flatten.reject(&:blank?).blank?
-          col = col.send(k,v)
-        end
-      end
-    end
-
-    table_cols = resource_class.table_columns
-    dt_data = col.map{|c| table_cols.inject({}){|h,v| h[v] = c.public_send(v); h}} 
-    render json: {
-      data: dt_data
-    }
   end
 
   def find_resource

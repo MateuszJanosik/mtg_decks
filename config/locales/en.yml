@@ -46,7 +46,7 @@ en:
         email: email
       deck:
         <<: *common_attributes
-        user_s: user
+        user: user
       deck_card:
         card_id: card
         amount: amount

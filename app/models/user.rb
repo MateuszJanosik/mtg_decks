@@ -9,7 +9,11 @@ class User < ApplicationRecord
   roles [:player, :admin]
 
   def self.table_columns
-    [:name_with_link, :email]
+    [
+      { data: "username" },
+      { data: "email" },
+      { data: "roles" },
+    ]
   end
 
   def to_s

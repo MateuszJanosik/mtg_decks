@@ -13,7 +13,11 @@ class Deck < ApplicationRecord
   scope :with_user_id, ->(v) { where(user_id: v) }
 
   def self.table_columns
-    [:name_with_link, :colors_s, :user_s]
+    [
+      { data: "name" },
+      { data: "colors" },
+      { data: "user" },
+    ]
   end
 
   def self.filters_enabled?

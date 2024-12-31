@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
     "datatables.net": "^2.1.8",
     "jquery": "^3.7.1"
   }

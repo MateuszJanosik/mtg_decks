@@ -11,3 +11,4 @@ pin "datatables.net", to: "https://cdn.datatables.net/1.13.1/js/jquery.dataTable
 pin "datatables.net-bs5", to: "https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"
 pin "@hotwired/turbo", to: "@hotwired--turbo.js" # @8.0.12
 pin "@rails/actioncable/src", to: "@rails--actioncable--src.js" # @7.2.201
+pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14
