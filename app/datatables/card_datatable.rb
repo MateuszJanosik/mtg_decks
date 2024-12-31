@@ -22,6 +22,29 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Card.all
+    params[:filters].blank? ? Card.all : filtered_records
   end
+
+  private
+
+  def filtered_records
+    scope = Card.all
+    scope = scope.with_colors(filtered_colors) if filtered_colors.presence
+    scope = scope.with_rarity(filtered_rarity) if filtered_rarity.presence
+    scope = scope.with_card_type(filtered_card_type) if filtered_card_type.presence
+    scope
+  end
+
+  def filtered_colors
+    params.dig(:filters, :with_colors).to_a.compact_blank
+  end
+
+  def filtered_rarity
+    params.dig(:filters, :with_rarity).to_a.compact_blank
+  end
+
+  def filtered_card_type
+    params.dig(:filters, :with_card_type).to_a.compact_blank
+  end
+
 end

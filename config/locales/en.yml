@@ -30,6 +30,11 @@ en:
           rare: rare
         with_rarity: rarity
         with_card_type: type
+        card_types:
+          creature: creature
+          spell: spell
+          instant: instant
+          land: land
       user:
         <<: *common_attributes
         roles: role

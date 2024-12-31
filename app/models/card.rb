@@ -35,7 +35,7 @@ class Card < ApplicationRecord
   end
 
   def card_type_s
-    self.class.human_enum_name(:rarity, card_type)
+    self.class.human_enum_name(:card_type, card_type)
   end
 
   def to_s
