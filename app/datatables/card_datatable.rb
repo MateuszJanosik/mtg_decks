@@ -12,7 +12,7 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
   def data
     records.map do |record|
       {
-        name: record.name,
+        name: record.name_with_link,
         desc: record.desc,
         colors: record.colors_s,
         card_type: record.card_type_s,

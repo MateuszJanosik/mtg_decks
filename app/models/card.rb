@@ -23,8 +23,12 @@ class Card < ApplicationRecord
       { data: "colors" },
       { data: "card_type" },
       { data: "rarity" }
-    ].to_json
+    ]
   end
+
+  # def self.table_columns
+  #   ['name', 'desc', 'colors', 'card_type', 'rarity']
+  # end
 
   def colors_s
     colors.map{|c| I18n.t(c, scope: "common.colors_values") }.join(', ')
