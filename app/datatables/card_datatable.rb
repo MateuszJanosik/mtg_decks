@@ -14,9 +14,9 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
       {
         name: record.name,
         desc: record.desc,
-        colors: record.colors,
-        card_type: record.card_type,
-        rarity: record.rarity
+        colors: record.colors_s,
+        card_type: record.card_type_s,
+        rarity: record.rarity_s
       }
     end
   end
