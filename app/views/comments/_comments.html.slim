@@ -1,7 +1,9 @@
 - @comments = resource.comments.reverse
-.row
-  .col-md-12
-    = render partial: 'comments/new_comment', locals: {resource: local_assigns[:resource] || @resource} if can? :create, Comment
-.row
-  #js-comments-container.col-md-12
-    = render partial: 'comments/comment', collection: @comments
+.comments data-controller="comments"
+  .row
+    .col-md-12
+      = render partial: 'comments/new_comment', locals: { resource: local_assigns[:resource] || @resource }
+  .row
+    #js-comments-container.col-md-12 data-comments-target="commentList"
+      - @comments.each do |comment|
+        = render partial: 'comments/comment', locals: { comment: comment }

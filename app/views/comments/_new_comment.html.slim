@@ -1,6 +1,5 @@
-div
-  = simple_form_for Comment.new, html: { id: 'new-comment-form' }, remote: true do |f|
-    = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
-    .new-comment-input
-      = f.input :content, as: :text, placeholder: "nowa wiadomość", class: 'form-control body-field', label: false
-    = f.button :submit, "skomentuj"
+= simple_form_for Comment.new, html: { id: 'new-comment-form', data: { turbo: false, action: "ajax:success->comments#createSuccess" } }, remote: true do |f|
+  = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
+  .new-comment-input
+    = f.input :content, as: :text, placeholder: "nowa wiadomość", class: 'form-control body-field', label: false, data: { comments_target: "commentBody" }
+  = f.button :submit, "skomentuj"
