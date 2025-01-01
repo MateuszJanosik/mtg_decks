@@ -1,4 +1,4 @@
-= simple_form_for Comment.new, html: { id: 'new-comment-form', data: { turbo: false, action: "ajax:success->comments#createSuccess" } }, remote: true do |f|
+= simple_form_for Comment.new, html: { id: 'new-comment-form', data: { type: 'html', turbo: false, action: "rails:ajax:success->comments#createSuccess" } }, remote: true do |f|
   = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
   .new-comment-input
     = f.input :content, as: :text, placeholder: "nowa wiadomość", class: 'form-control body-field', label: false, data: { comments_target: "commentBody" }

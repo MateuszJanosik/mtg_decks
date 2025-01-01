@@ -1,5 +1,5 @@
 div class="comment" id="comment-#{comment.id}" data-comment-id="#{comment.id}" data-comments-target="comment"
-  p= comment.content
+  p = comment.content
   small= "Dodano przez: #{comment.user.username}"
   - if can?(:destroy, comment)
     button.btn.btn-danger data-action="click->comments#delete" data-comments-id-param="#{comment.id}"
