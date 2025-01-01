@@ -1,6 +1,7 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "jquery";
+import "jquery_ujs"
 import "select2";
 import "datatables.net";
 import "datatables.net-bs5";
