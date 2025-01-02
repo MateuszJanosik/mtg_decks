@@ -1,6 +1,10 @@
-div class="comment" id="comment-#{comment.id}" data-comment-id="#{comment.id}" data-comments-target="comment"
-  p = comment.content
-  small= "Dodano przez: #{comment.user.username}"
-  - if can?(:destroy, comment)
-    button.btn.btn-danger data-action="click->comments#delete" data-comments-id-param="#{comment.id}"
-      = "Usuń"
+.comment-container id="js-comment-#{comment.id}" style="border: 1px solid #ddd; margin-bottom: 10px; padding: 10px; border-radius: 5px;"
+  .user-info.text-muted style="font-size: 0.9em; margin-bottom: 5px; display: flex; align-items: center; justify-content: space-between;"
+    .user-details
+      strong= comment.user.to_s
+      |  
+      span= comment.created_at.strftime("%Y-%m-%d %H:%M") if comment.created_at
+    .delete-button
+      = button_to 'usuń', path_for_resource(comment), method: :delete, remote: true, form: { data: { turbo: true, turbo_confirm: 'Are you sure?' } }, class: "btn btn-link text-danger p-0", style: "font-size: 0.9em;" if can?(:destroy, comment)
+  .comment-body
+    = comment.content

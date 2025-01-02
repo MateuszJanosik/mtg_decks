@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     authorize! :create, @resource
 
     if @resource.save
-      render partial: 'comments/comment', locals: { comment: @resource }, status: :ok
+      render turbo_stream: turbo_stream.prepend('comments', partial: 'comments/comment', locals: { comment: @resource })
     else
       render json: { error: @resource.errors.full_messages.join(", ") }, status: :unprocessable_entity
     end
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     authorize! :destroy, @resource
 
     if @resource.destroy
-      head :ok
+      render turbo_stream: turbo_stream.remove("js-comment-#{@resource.id}")
     else
       render json: { error: "Nie udało się usunąć komentarza." }, status: :unprocessable_entity
     end

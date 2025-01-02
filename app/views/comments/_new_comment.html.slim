@@ -1,5 +1,7 @@
-= simple_form_for Comment.new, html: { id: 'new-comment-form', data: { type: 'html', turbo: false, action: "rails:ajax:success->comments#createSuccess" } }, remote: true do |f|
-  = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
-  .new-comment-input
-    = f.input :content, as: :text, placeholder: "nowa wiadomość", class: 'form-control body-field', label: false, data: { comments_target: "commentBody" }
-  = f.button :submit, "skomentuj"
+div style="margin-bottom: 20px;"
+  = turbo_frame_tag "new_comment" do
+    = simple_form_for Comment.new, html: { id: 'new-comment-form' }, remote: true do |f|
+      = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
+      .new-comment-input
+        = f.input :content, as: :text, placeholder: "nowa wiadomość", class: 'form-control body-field', label: false
+      = f.button :submit, "Skomentuj", class: "btn btn-primary"

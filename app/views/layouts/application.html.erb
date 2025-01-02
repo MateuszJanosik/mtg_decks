@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'turbo', type: 'module-shim' %>
 
     <!-- Stylesheets -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -24,5 +25,3 @@
     </div>
   </body>
 </html>
-
-

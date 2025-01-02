@@ -1,4 +1,4 @@
-import "@hotwired/turbo-rails";
+import { Turbo } from "@hotwired/turbo-rails"
 import "controllers";
 import "jquery";
 import "jquery_ujs"
@@ -30,3 +30,9 @@ $(document).on("turbo:load", function() {
 document.addEventListener('cocoon:after-insert', function(e) {
   $('.js-select2').select2();
 });
+
+document.addEventListener("turbo:submit-end", (event) => {
+  if (event.target.id === "new-comment-form") {
+    event.target.reset();
+  }
+})
