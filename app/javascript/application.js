@@ -6,6 +6,7 @@ import "select2";
 import "datatables.net";
 import "datatables.net-bs5";
 import "@nathanvda/cocoon";
+import "bootstrap";
 
 $(document).on("turbo:load", function() {
   $(".datatable").each(function() {

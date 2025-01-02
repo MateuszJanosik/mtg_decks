@@ -1,0 +1,6 @@
+#flash
+  - flash.each do |type, message|
+    .alert class="alert-#{type} alert-dismissible show" role="alert"
+      = message
+      button.close aria-label="Close" data-bs-dismiss="alert" type="button"
+        span aria-hidden="true" &times;
