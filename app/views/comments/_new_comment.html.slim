@@ -3,5 +3,5 @@ div style="margin-bottom: 20px;"
     = simple_form_for Comment.new, html: { id: 'new-comment-form' }, remote: true do |f|
       = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
       .new-comment-input
-        = f.input :content, as: :text, placeholder: "nowa wiadomość", class: 'form-control body-field', label: false
-      = f.button :submit, "Skomentuj", class: "btn btn-primary"
+        = f.input :content, as: :text, placeholder: I18n.t('comments.new_comment_placeholder'), class: 'form-control body-field', label: false
+      = f.button :submit, I18n.t('comments.submit_button'), class: "btn btn-primary"

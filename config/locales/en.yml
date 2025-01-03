@@ -1,6 +1,11 @@
 en:
   cards: Cards
   decks: Decks
+  users: Users
+  card: Card
+  deck: Deck
+  user: User
+  my_decks: "My decks"
   common: &common_attributes
     name_with_link: name
     name: name
@@ -93,4 +98,25 @@ en:
     sessions:
       signed_in: signed in
       signed_out: signed out
+
+  actions:
+    edit: "edit"
+    delete: "delete"
+    delete_confirmation: "Are you sure?"
+    new: "New"
+    sure: "Are you sure?"
+
+  session:
+    logout: "Logout"
+    register: "Register"
+    login: "Login"
+
+  comments:
+    new_comment_placeholder: "new message"
+    submit_button: "Comment"
+    delete_button: "delete"
+    delete_confirmation: "Are you sure?"
+
+  filters:
+    filter_button: "Filter"
 

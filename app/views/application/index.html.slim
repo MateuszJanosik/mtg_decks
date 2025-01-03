@@ -7,7 +7,7 @@
             .col-md-10
               = render partial: 'filters', locals: {f: f}
             .col-md-2.d-flex.align-items-center.justify-content-end
-              = f.submit "Filter", class: "btn btn-primary"
+              = f.submit I18n.t('filters.filter_button'), class: "btn btn-primary"
 
 table.datatable style="width:100%" class="mt-4" data-url="#{path_for_resource(@resource_class, format: :json, filters: params[:filters].try(:to_unsafe_h))}" data-columns="#{@resource_class.table_columns.to_json}"
   thead

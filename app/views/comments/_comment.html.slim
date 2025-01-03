@@ -5,6 +5,6 @@
       |  
       span= comment.created_at.strftime("%Y-%m-%d %H:%M") if comment.created_at
     .delete-button
-      = button_to 'usuń', path_for_resource(comment), method: :delete, remote: true, form: { data: { turbo: true, turbo_confirm: 'Are you sure?' } }, class: "btn btn-link text-danger p-0", style: "font-size: 0.9em;" if can?(:destroy, comment)
+      = button_to I18n.t('actions.delete'), path_for_resource(comment), method: :delete, remote: true, form: { data: { turbo: true, turbo_confirm: I18n.t('actions.delete_confirmation') } }, class: "btn btn-link text-danger p-0", style: "font-size: 0.9em;" if can?(:destroy, comment)
   .comment-body
     = comment.content

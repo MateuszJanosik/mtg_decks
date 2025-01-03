@@ -6,26 +6,26 @@
           = @resource.name
       .col-md-6.text-right
         .d-flex.align-items-center.justify-content-end
-          = link_to("edycja", path_for_resource(@resource, action: :edit), class: "text-muted", style: "text-decoration: none; margin-left: 10px;") if can?(:update, @resource)
-          = link_to("usuń", path_for_resource(@resource), method: :delete, data: {confirm: "na pewno?"}, class: "text-muted", style: "text-decoration: none; margin-left: 10px;") if can?(:destroy, @resource)
+          = link_to(I18n.t('actions.edit'), path_for_resource(@resource, action: :edit), class: "text-muted", style: "text-decoration: none; margin-left: 10px;") if can?(:update, @resource)
+          = link_to(I18n.t('actions.delete'), path_for_resource(@resource), method: :delete, data: {confirm: I18n.t('actions.delete_confirmation')}, class: "text-muted", style: "text-decoration: none; margin-left: 10px;") if can?(:destroy, @resource)
     .row
       .col-md-5
         = image_tag @resource.image_url(:medium)
       .col-md-7
         div
-          strong Typ:
+          strong = I18n.t('activerecord.attributes.card.card_type')
           | &nbsp;
           = @resource.card_type
         div
-          strong Kolory:
+          strong = I18n.t('activerecord.attributes.card.colors')
           | &nbsp;
           = @resource.colors_s
         div
-          strong Rzadkość:
+          strong = I18n.t('activerecord.attributes.card.rarity')
           | &nbsp;
           = @resource.rarity_s
         div
-          strong Opis:
+          strong = I18n.t('activerecord.attributes.card.desc')
           | &nbsp;
           = @resource.desc
 = render_comments

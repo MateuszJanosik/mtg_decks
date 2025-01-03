@@ -1,8 +1,8 @@
 h2= @resource.name
 .ed-de
-  = link_to("edycja", path_for_resource(@resource, action: :edit)) if can?(:update, @resource)
+  = link_to(I18n.t('actions.edit'), path_for_resource(@resource, action: :edit)) if can?(:update, @resource)
   | &nbsp;
-  = link_to("usuń", path_for_resource(@resource), method: :delete, data: {confirm: "na pewno?"}) if can?(:destroy, @resource)
+  = link_to(I18n.t('actions.delete'), path_for_resource(@resource), method: :delete, data: {confirm: I18n.t('actions.sure')}) if can?(:destroy, @resource)
 .panel.panel-default
   .panel-body.deck-block
     - @cards_by_type.each do |type, col|
