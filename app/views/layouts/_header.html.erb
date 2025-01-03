@@ -1,45 +1,52 @@
-<nav class='navbar navbar-inverse'>
-  <div class='navbar-header'>
-    <%=link_to "MTG", root_path, class: 'navbar-brand'%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <%= link_to "MTG", root_path, class: 'navbar-brand font-weight-bold text-center' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% [Card, Deck].each do |c| %>
+          <li class="nav-item">
+            <%= link_to I18n.t(c.to_s.downcase.pluralize), path_for_resource(c), class: 'nav-link font-weight-bold' %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+        <% if @resource_class && @resource.blank? && can?(:create, @resource_class) %>
+          <li class="nav-item">
+            <%= link_to "Dodaj", path_for_resource(@resource_class, action: :new), class: 'nav-link' %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <% if can? :read, User %>
+            <li class="nav-item">
+              <%= link_to "Użytkownicy", path_for_resource(User), class: 'nav-link' %>
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "Moje talie", path_for_resource(Deck, filters: {with_user_id: current_user.id}), class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+              <span class="glyphicon glyphicon-log-out"></span>Wyloguj
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path, class: 'nav-link' do %>
+              <span class="glyphicon glyphicon-user"></span>Rejestracja
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: 'nav-link' do %>
+              <span class="glyphicon glyphicon-log-in"></span>Zaloguj
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <ul class='nav navbar-nav'>
-    <% [Card, Deck].each do |c| %>
-      <li>
-        <%= link_to I18n.t(c.to_s.downcase.pluralize), path_for_resource(c), class: 'nav-link' %> 
-      </li>
-    <% end %> 
-  </ul>
-  <ul class='nav navbar-nav navbar-right'>
-    <% if @resource_class && @resource.blank? && can?(:create, @resource_class)%>
-      <li><%= link_to "Dodaj", path_for_resource(@resource_class, action: :new), class: 'nav-link' %> </li>
-    <% end %>
-    <%if user_signed_in?%>
-      <% if can? :read, User %>
-        <li>
-          <%=link_to "Użytkownicy", path_for_resource(User), class: 'nav-link' %>
-        </li>
-      <%end%>
-      <li>
-        <%=link_to "Moje talie", path_for_resource(Deck, filters: {with_user_id: current_user.id}), class: 'nav-link' %>
-      </li>
-      <li>
-        <%=link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-          <span class='glyphicon glyphicon-log-out'></span>Wyloguj
-        <%end%>
-      </li>
-    <%else%>
-      <li>
-        <%=link_to new_user_registration_path, class: 'nav-link' do %>
-          <span class='glyphicon glyphicon-user'></span>Rejestracja
-        <%end%>
-      </li>
-      <li>
-        <%=link_to new_user_session_path, class: 'nav-link' do %>
-          <span class='glyphicon glyphicon-log-in'></span>Zaloguj
-        <%end%>
-      </li>
-    <%end%>
-  </ul>
 </nav>
 
 

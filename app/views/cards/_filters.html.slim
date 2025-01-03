@@ -1,13 +1,13 @@
 .row
-  .col
+  .col-md-4
     .form-group
       = f.label :with_colors, required: false, label: I18n.t(:with_colors, scope: "activerecord.attributes.card")
       = f.input :with_colors, label: false, collection: Card.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e] }, input_html: { multiple: true, class: 'js-select2' }
-  .col
+  .col-md-4
     .form-group
       = f.label :with_rarity, required: false, label: I18n.t(:with_rarity, scope: "activerecord.attributes.card")
       = f.input :with_rarity, label: false, collection: @resource_class.rarities.keys.map { |e| [@resource_class.human_enum_name(:rarity, e), e] }, input_html: { multiple: true, class: 'js-select2' }
-  .col
+  .col-md-4
     .form-group
       = f.label :with_card_type, required: false, label: I18n.t(:with_card_type, scope: "activerecord.attributes.card")
       = f.input :with_card_type, label: false, collection: @resource_class.card_types.keys, input_html: { multiple: true, class: 'js-select2' }

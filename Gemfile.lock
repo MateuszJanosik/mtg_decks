@@ -83,6 +83,8 @@ GEM
       rails (>= 6.0)
       zeitwerk
     ast (2.4.2)
+    autoprefixer-rails (10.4.19.0)
+      execjs (~> 2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.4.0)
@@ -90,6 +92,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
+    bootstrap (5.3.3)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
     brakeman (6.2.2)
       racc
     builder (3.3.0)
@@ -122,6 +127,15 @@ GEM
       warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.13.1)
+    execjs (2.10.0)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -195,6 +209,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pkg-config (1.5.8)
+    popper_js (2.11.8)
     psych (5.2.2)
       date
       stringio
@@ -283,6 +298,16 @@ GEM
       rubocop-rails
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     securerandom (0.4.1)
     select2-rails (4.0.13)
     selenium-webdriver (4.27.0)
@@ -359,6 +384,7 @@ DEPENDENCIES
   active_flag
   ajax-datatables-rails
   bootsnap
+  bootstrap (~> 5.3)
   brakeman
   byebug
   cancancan
@@ -377,6 +403,7 @@ DEPENDENCIES
   rmagick
   role_model
   rubocop-rails-omakase
+  sass-rails
   select2-rails
   selenium-webdriver
   simple_form
