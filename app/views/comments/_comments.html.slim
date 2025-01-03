@@ -1,8 +1,9 @@
-- @comments = resource.comments.reverse
-.row
-  .col-md-12
-    = render partial: 'comments/new_comment', locals: { resource: local_assigns[:resource] || @resource } if can?(:create, Comment)
-.row
-  #js-comments-container.col-md-12
-    = turbo_frame_tag "comments" do
-      = render partial: 'comments/comment', collection: @comments, as: :comment
+- if can?(:read, Comment)
+  - @comments = resource.comments.reverse
+  .row
+    .col-md-12
+      = render partial: 'comments/new_comment', locals: { resource: local_assigns[:resource] || @resource } if can?(:create, Comment)
+  .row
+    #js-comments-container.col-md-12
+      = turbo_frame_tag "comments" do
+        = render partial: 'comments/comment', collection: @comments, as: :comment
