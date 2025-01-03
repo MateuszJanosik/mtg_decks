@@ -1,6 +1,6 @@
-.nested-fields style=("width: 100%")
-  table
+.nested-fields style=("width: 100%; display: flex; align-items: center;")
+  table style=("flex: 1;")
     tr.nested-fields
-      td style=("border: 0") = f.input :card_id, collection: Card.all, input_html: { multiple: false, class: 'js-select2', style: "min-width:200px"}
-      td style=("border: 0") = f.input :amount
-      td style=("border: 0") = link_to_remove_association "usuń", f, confirm: t('support.sure')
+      td style=("border: 0;") = f.input :card_id, collection: Card.all, input_html: { multiple: false, class: 'js-select2', style: "min-width:200px;" }
+      td style=("border: 0;") = f.input :amount, input_html: { style: "width: auto;" }
+  td style=("border: 0; text-align: right; vertical-align: middle;") = link_to_remove_association "usuń", f, confirm: t('support.sure'), class: "btn btn-danger"
