@@ -5,37 +5,37 @@
   <ul class='nav navbar-nav'>
     <% [Card, Deck].each do |c| %>
       <li>
-        <%= link_to I18n.t(c.to_s.downcase.pluralize), path_for_resource(c) %> 
+        <%= link_to I18n.t(c.to_s.downcase.pluralize), path_for_resource(c), class: 'nav-link' %> 
       </li>
     <% end %> 
   </ul>
   <ul class='nav navbar-nav navbar-right'>
     <% if @resource_class && @resource.blank? && can?(:create, @resource_class)%>
-      <li ><%= link_to "Dodaj", path_for_resource(@resource_class, action: :new) %> </li>
+      <li><%= link_to "Dodaj", path_for_resource(@resource_class, action: :new), class: 'nav-link' %> </li>
     <% end %>
     <%if user_signed_in?%>
       <% if can? :read, User %>
         <li>
-          <%=link_to "Użytkownicy", path_for_resource(User) %>
+          <%=link_to "Użytkownicy", path_for_resource(User), class: 'nav-link' %>
         </li>
       <%end%>
       <li>
-        <%=link_to "Moje talie", path_for_resource(Deck, filters: {with_user_id: current_user.id}) %>
+        <%=link_to "Moje talie", path_for_resource(Deck, filters: {with_user_id: current_user.id}), class: 'nav-link' %>
       </li>
       <li>
-        <%=link_to destroy_user_session_path, method: :delete do %>
-          <span class='glyphicon glyphicon-log-out'%></span>Wyloguj
+        <%=link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+          <span class='glyphicon glyphicon-log-out'></span>Wyloguj
         <%end%>
       </li>
     <%else%>
       <li>
-        <%=link_to  new_user_registration_path do %>
-          <span class='glyphicon glyphicon-user'%></span>Rejestracja
+        <%=link_to new_user_registration_path, class: 'nav-link' do %>
+          <span class='glyphicon glyphicon-user'></span>Rejestracja
         <%end%>
       </li>
       <li>
-        <%=link_to new_user_session_path do %>
-          <span class='glyphicon glyphicon-log-in'%></span>Zaloguj
+        <%=link_to new_user_session_path, class: 'nav-link' do %>
+          <span class='glyphicon glyphicon-log-in'></span>Zaloguj
         <%end%>
       </li>
     <%end%>

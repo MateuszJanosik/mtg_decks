@@ -31,29 +31,28 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'slim'
-gem 'active_flag'
-gem 'simple_form'
-gem 'jquery-rails'
-gem 'bootstrap-sass'
-gem 'ajax-datatables-rails'
-gem 'jquery-datatables'
-gem 'responders'
-gem 'carrierwave'
-gem 'rmagick'
-gem 'select2-rails'
-gem 'devise'
-gem 'cancancan'
-gem 'role_model'
-gem 'cocoon'
-gem 'globalid'
+gem "slim"
+gem "active_flag"
+gem "simple_form"
+gem "jquery-rails"
+gem "ajax-datatables-rails"
+gem "jquery-datatables"
+gem "responders"
+gem "carrierwave"
+gem "rmagick"
+gem "select2-rails"
+gem "devise"
+gem "cancancan"
+gem "role_model"
+gem "cocoon"
+gem "globalid"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "byebug", platforms: [ :mri, :mingw, :x64_mingw ]
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
