@@ -33,13 +33,23 @@ en:
           common: common
           uncommon: uncommon
           rare: rare
+          mythic_rare: mythic rare
         with_rarity: rarity
         with_card_type: type
         card_types:
+          artifact: artifact
+          conspiracy: conspiracy
           creature: creature
-          spell: spell
+          enchantment: enchantment
           instant: instant
           land: land
+          phenomenon: phenomenon
+          plane: plane
+          planeswalker: planeswalker
+          scheme: scheme
+          sorcery: sorcery
+          tribal: tribal
+          vanguard: vanguard
       user:
         <<: *common_attributes
         roles: role
