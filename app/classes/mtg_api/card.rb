@@ -8,12 +8,12 @@ class MtgApi::Card
   class << self
     def find(id)
       response = get(id)
-      response.success? ? new(response.cards.first) : nil
+      response.success? ? new(response.data(:card)) : nil
     end
 
-    def search(params)
+    def search_cards(params)
       response = search(params)
-      response.success? ? response.cards.map { |card_data| new(card_data) } : []
+      response.success? ? response.data(:cards).map { |card_data| new(card_data) } : []
     end
 
     def fetch_cards(limit)
@@ -22,9 +22,8 @@ class MtgApi::Card
       while cards.size < limit
         response = search(page: page)
         break unless response.success?
-
-        cards.concat(response.cards.map { |card_data| new(card_data) })
-        break if response.cards.size < 100
+        cards.concat(response.data(:cards).map { |card_data| new(card_data) })
+        break if response.data(:cards).size < 100
 
         page += 1
       end
@@ -34,6 +33,10 @@ class MtgApi::Card
 
   def initialize(params)
     @params = params
+  end
+
+  def id
+    @params["id"]
   end
 
   def name

@@ -10,10 +10,14 @@ class MtgApi::Response
   end
 
   def success?
-    response[:Success].present?
+    errors.blank?
   end
 
   def errors
-    response[:Errors]
+    response[:error]
+  end
+
+  def data(key)
+    response[key]
   end
 end
