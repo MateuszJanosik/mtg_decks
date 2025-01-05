@@ -2,7 +2,7 @@ class Card < ApplicationRecord
   include CommonModel
   mount_uploader :image, ImageUploader
   flag :colors, MTG_COLORS
-  enum rarity: [ :common, :uncommon, :rare, :mythic_rare ]
+  enum rarity: [ :common, :uncommon, :rare, :mythic ]
   enum card_type: {
     artifact: 0, conspiracy: 1, creature: 2, enchantment: 3, instant: 4, land: 5,
     phenomenon: 6, plane: 7, planeswalker: 8, scheme: 9, sorcery: 10, tribal: 11, vanguard: 12

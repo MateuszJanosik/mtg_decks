@@ -18,8 +18,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_28_181359) do
     t.integer "rarity"
     t.integer "card_type"
     t.string "image"
+    t.string "external_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["external_id"], name: "index_cards_on_external_id"
   end
 
   create_table "comments", force: :cascade do |t|

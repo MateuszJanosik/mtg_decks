@@ -33,7 +33,7 @@ en:
           common: common
           uncommon: uncommon
           rare: rare
-          mythic_rare: mythic rare
+          mythic: mythic rare
         with_rarity: rarity
         with_card_type: type
         card_types:

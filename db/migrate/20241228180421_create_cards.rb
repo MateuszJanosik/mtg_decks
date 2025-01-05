@@ -7,6 +7,7 @@ class CreateCards < ActiveRecord::Migration[7.2]
       t.integer :rarity
       t.integer :card_type
       t.string :image
+      t.string :external_id, index: true
 
       t.timestamps
     end

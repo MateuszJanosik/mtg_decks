@@ -16,10 +16,11 @@
           strong = I18n.t('activerecord.attributes.card.card_type')
           | &nbsp;
           = @resource.card_type
-        div
-          strong = I18n.t('activerecord.attributes.card.colors')
-          | &nbsp;
-          = @resource.colors_s
+        unless @resource.colors.blank?
+          div
+            strong = I18n.t('activerecord.attributes.card.colors')
+            | &nbsp;
+            = @resource.colors_s
         div
           strong = I18n.t('activerecord.attributes.card.rarity')
           | &nbsp;

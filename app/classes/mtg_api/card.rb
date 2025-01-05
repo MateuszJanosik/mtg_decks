@@ -16,11 +16,11 @@ class MtgApi::Card
       response.success? ? response.data(:cards).map { |card_data| new(card_data) } : []
     end
 
-    def fetch_cards(limit)
+    def fetch_cards(limit, params = {})
       cards = []
       page = 1
       while cards.size < limit
-        response = search(page: page)
+        response = search({ page: page }.merge(params))
         break unless response.success?
         cards.concat(response.data(:cards).map { |card_data| new(card_data) })
         break if response.data(:cards).size < 100
@@ -47,8 +47,8 @@ class MtgApi::Card
     @params["colors"]
   end
 
-  def card_type
-    @params["type"]
+  def card_types
+    @params["types"]
   end
 
   def rarity
