@@ -11,6 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2024_12_28_181359) do
+  enable_extension "plpgsql"
+
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.text "desc"

@@ -49,6 +49,7 @@ gem "globalid"
 gem "bootstrap", "~> 5.3"
 gem "sass-rails"
 gem "http"
+gem "pg"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

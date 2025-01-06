@@ -224,6 +224,7 @@ GEM
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
     pkg-config (1.5.8)
     popper_js (2.11.8)
     psych (5.2.2)
@@ -414,6 +415,7 @@ DEPENDENCIES
   jbuilder
   jquery-datatables
   jquery-rails
+  pg
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
   responders
