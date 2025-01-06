@@ -21,6 +21,14 @@ module CommonModel
         fields <<  ->(e) { e.try(:to_s).try(:squeeze, " ").try(:strip) }
         proccess_attr fields
       end
+
+      def column_names
+        []
+      end
+
+      def table_columns
+        column_names.map { |col| { data: col.to_s } }
+      end
     end
 
   def name_with_link

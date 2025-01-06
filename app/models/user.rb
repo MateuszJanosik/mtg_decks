@@ -1,4 +1,4 @@
-require 'role_model'
+require "role_model"
 class User < ApplicationRecord
   include CommonModel
   include RoleModel
@@ -6,14 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   roles_attribute :roles_mask
-  roles [:player, :admin]
+  roles [ :player, :admin ]
 
-  def self.table_columns
-    [
-      { data: "username" },
-      { data: "email" },
-      { data: "roles" },
-    ]
+  def self.column_names
+    [ :username, :email, :roles ]
   end
 
   def to_s

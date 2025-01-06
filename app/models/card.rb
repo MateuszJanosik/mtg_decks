@@ -19,19 +19,9 @@ class Card < ApplicationRecord
   scope :with_rarity, ->(v) { where(rarity: [ v ].flatten.reject(&:blank?)) }
   scope :with_card_type, ->(v) { where(card_type: [ v ].flatten.reject(&:blank?)) }
 
-  def self.table_columns
-    [
-      { data: "name" },
-      { data: "desc" },
-      { data: "colors" },
-      { data: "card_type" },
-      { data: "rarity" }
-    ]
+  def self.column_names
+    [ :name, :desc, :colors, :card_type, :rarity ]
   end
-
-  # def self.table_columns
-  #   ['name', 'desc', 'colors', 'card_type', 'rarity']
-  # end
 
   def colors_s
     colors.map { |c| I18n.t(c, scope: "common.colors_values") }.join(", ")
