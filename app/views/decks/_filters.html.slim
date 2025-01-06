@@ -1,5 +1,5 @@
 .row
   .col-md-4
-    = f.label :with_colors, required: false, label: I18n.t(:with_colors, scope: "activerecord.attributes.deck")
+    = label_tag 'filters[with_colors]', I18n.t(:with_colors, scope: "activerecord.attributes.deck"), required: false
     | &nbsp;
-    = f.input :with_colors, label: false, collection: Deck.colors.keys.map{|e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e]}, input_html: { multiple: true, class: 'js-select2' }
+    = select_tag 'filters[with_colors]', options_for_select(Deck.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control'

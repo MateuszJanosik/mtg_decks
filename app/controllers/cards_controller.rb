@@ -2,7 +2,7 @@
 
 class CardsController < ApplicationController
   include CommonController
-  
+
   def render_datatable
     render json: CardDatatable.new(params)
   end

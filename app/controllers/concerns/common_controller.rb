@@ -37,7 +37,7 @@ module CommonController
     find_resource
     authorize! :show, @resource
     callback_during_show
-    respond_with(@resource) 
+    respond_with(@resource)
   end
 
   def new
@@ -100,13 +100,13 @@ module CommonController
 
   def callback_after_create
   end
-  
+
   def callback_after_update
   end
 
   def callback_before_create
   end
-  
+
   def callback_before_update
   end
 
@@ -118,5 +118,4 @@ module CommonController
   def safe_params
     params.require(resource_class.name.underscore.to_sym).permit!
   end
-
 end
