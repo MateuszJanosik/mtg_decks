@@ -13,7 +13,7 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         name: record.name_with_link,
-        desc: record.desc,
+        desc: truncate_desc(record.desc),
         colors: record.colors_s,
         card_type: record.card_type_s,
         rarity: record.rarity_s
@@ -47,4 +47,7 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
     params.dig(:filters, :with_card_type).to_a.compact_blank
   end
 
+  def truncate_desc(desc)
+    desc.truncate(70, separator: " ")
+  end
 end

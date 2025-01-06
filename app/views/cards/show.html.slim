@@ -1,13 +1,13 @@
-.panel.panel-default
-  .panel-body.card-block
-    .row
+.card
+  .card-body
+    .row.mb-4
       .col-md-6
         h2
           = @resource.name
-      .col-md-6.text-right
+      .col-md-6.text-end
         .d-flex.align-items-center.justify-content-end
-          = link_to(I18n.t('actions.edit'), path_for_resource(@resource, action: :edit), class: "text-muted", style: "text-decoration: none; margin-left: 10px;") if can?(:update, @resource)
-          = link_to(I18n.t('actions.delete'), path_for_resource(@resource), method: :delete, data: {confirm: I18n.t('actions.delete_confirmation')}, class: "text-muted", style: "text-decoration: none; margin-left: 10px;") if can?(:destroy, @resource)
+          = link_to(I18n.t('actions.edit'), path_for_resource(@resource, action: :edit), class: 'btn btn-primary me-2') if can?(:update, @resource)
+          = link_to(I18n.t('actions.delete'), path_for_resource(@resource), method: :delete, data: {confirm: I18n.t('actions.delete_confirmation')}, class: 'btn btn-danger') if can?(:destroy, @resource)
     .row
       .col-md-5
         = image_tag @resource.image_url(:medium)
@@ -16,7 +16,7 @@
           strong = I18n.t('activerecord.attributes.card.card_type')
           | &nbsp;
           = @resource.card_type
-        unless @resource.colors.blank?
+        - unless @resource.colors.blank?
           div
             strong = I18n.t('activerecord.attributes.card.colors')
             | &nbsp;

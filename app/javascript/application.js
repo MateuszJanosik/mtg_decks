@@ -28,11 +28,11 @@ $(document).on("turbo:load", function() {
   $('.js-select2').select2();
 });
 
-document.addEventListener('cocoon:after-insert', function(e) {
+$(document).on('cocoon:after-insert', function(e) {
   $('.js-select2').select2();
 });
 
-document.addEventListener("turbo:submit-end", (event) => {
+$(document).on("turbo:submit-end", (event) => {
   if (event.target.id === "new-comment-form") {
     event.target.reset();
   }
