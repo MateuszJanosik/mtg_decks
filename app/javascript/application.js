@@ -37,3 +37,18 @@ $(document).on("turbo:submit-end", (event) => {
     event.target.reset();
   }
 })
+
+
+$(document).on('turbo:before-cache', function() {
+  var dataTable = $($.fn.dataTable.tables(true)).DataTable();
+  if (dataTable !== null) {
+    dataTable.clear();
+    dataTable.destroy();
+  }
+
+  $('.js-select2').each(function() {
+    if ($(this).hasClass("select2-hidden-accessible")) {
+      $(this).select2('destroy');
+    }
+  });
+});
