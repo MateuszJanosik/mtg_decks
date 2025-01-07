@@ -44,7 +44,6 @@ class Deck < ApplicationRecord
     grouped_cards = deck_cards.group_by(&:card_id)
     grouped_cards.each do |card_id, cards|
       if cards.size > 1
-        total_amount = cards.sum(&:amount)
         cards.first.amount = cards.sum(&:amount)
         cards.drop(1).each(&:mark_for_destruction)
       end

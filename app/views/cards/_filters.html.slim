@@ -2,7 +2,6 @@
   .col-md-4
     .form-group
       = label_tag 'filters[with_colors]', I18n.t(:with_colors, scope: "activerecord.attributes.card"), required: false
-      
       = select_tag 'filters[with_colors]', options_for_select(Card.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control'
   .col-md-4
     .form-group

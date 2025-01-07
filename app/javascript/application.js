@@ -25,11 +25,15 @@ $(document).on("turbo:load", function() {
     }
   });
 
-  $('.js-select2').select2();
+  $('.js-select2').select2({
+    theme: 'bootstrap-5'
+  });
 });
 
 $(document).on('cocoon:after-insert', function(e) {
-  $('.js-select2').select2();
+  $('.js-select2').select2({
+    theme: 'bootstrap-5'
+  });
 });
 
 $(document).on("turbo:submit-end", (event) => {
