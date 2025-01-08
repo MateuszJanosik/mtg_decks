@@ -28,7 +28,7 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
   private
 
   def truncate_desc(desc)
-    desc.truncate(70, separator: " ")
+    desc.to_s.truncate(70, separator: " ")
   end
 
   def filtered_records
