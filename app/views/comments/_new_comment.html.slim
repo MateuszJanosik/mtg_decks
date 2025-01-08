@@ -1,7 +1,10 @@
 div style="margin-bottom: 20px;"
-  = turbo_frame_tag "new_comment" do
-    = simple_form_for Comment.new, html: { id: 'new-comment-form' }, remote: true do |f|
-      = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
-      .new-comment-input
-        = f.input :content, as: :text, placeholder: I18n.t('comments.new_comment_placeholder'), class: 'form-control body-field', label: false
-      = f.button :submit, I18n.t('comments.submit_button'), class: "btn btn-primary"
+  - if user_signed_in?
+    = turbo_frame_tag "new_comment" do
+      = simple_form_for Comment.new, html: { id: 'new-comment-form' }, remote: true do |f|
+        = f.input :related_gid, as: :hidden, input_html: { value: resource.to_global_id }
+        .new-comment-input
+          = f.input :content, as: :text, placeholder: I18n.t('comments.new_comment_placeholder'), class: 'form-control body-field', label: false
+        = f.button :submit, I18n.t('comments.submit_button'), class: "btn btn-primary"
+  - else
+    p.p-2 = I18n.t('comments.login_to_comment')

@@ -122,10 +122,11 @@ en:
     login: "Login"
 
   comments:
-    new_comment_placeholder: "new message"
+    new_comment_placeholder: "new comment"
     submit_button: "Comment"
     delete_button: "delete"
     delete_confirmation: "Are you sure?"
+    login_to_comment: "You must be logged in to write comments."
 
   filters:
     filter_button: "Filter"

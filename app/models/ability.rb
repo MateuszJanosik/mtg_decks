@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, [ Card, Deck ]
+    can :read, [ Card, Deck, Comment ]
 
     return unless user
 

@@ -29,3 +29,17 @@ end
   end
   deck.update_colors!
 end
+
+# Create comments for Cards
+Card.find_each do |card|
+  3.times do |i|
+    Comment.create!(user: admin, related: card, content: "Comment #{i + 1} on #{card.name}")
+  end
+end
+
+# Create comments for Decks
+Deck.find_each do |deck|
+  3.times do |i|
+    Comment.create!(user: player, related: deck, content: "Comment #{i + 1} on #{deck.name}")
+  end
+end
