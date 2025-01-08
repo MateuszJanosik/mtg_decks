@@ -13,7 +13,7 @@ class MtgApi::Card
 
     def search_cards(params)
       response = search(params)
-      response.success? ? response.data(:cards).map { |card_data| new(card_data) } : []
+      response.success? ? map_card_data(response.data(:cards)) : []
     end
 
     def fetch_cards(limit, params = {})
@@ -22,12 +22,19 @@ class MtgApi::Card
       while cards.size < limit
         response = search({ page: page }.merge(params))
         break unless response.success?
-        cards.concat(response.data(:cards).map { |card_data| new(card_data) })
+
+        cards.concat(map_card_data(response.data(:cards)))
         break if response.data(:cards).size < 100
 
         page += 1
       end
       cards.take(limit)
+    end
+
+    private
+
+    def map_card_data(cards_data)
+      cards_data.map { |card_data| new(card_data) }
     end
   end
 
