@@ -13,7 +13,7 @@ class Deck < ApplicationRecord
   scope :with_colors, ->(v) { where_colors(*[ v ].flatten.reject(&:blank?)) }
   scope :with_user_id, ->(v) { where(user_id: v) }
 
-  def self.column_names
+  def self.index_column_names
     [ :name, :colors, :user ]
   end
 

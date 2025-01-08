@@ -8,7 +8,7 @@ class User < ApplicationRecord
   roles_attribute :roles_mask
   roles [ :player, :admin ]
 
-  def self.column_names
+  def self.index_column_names
     [ :username, :email, :roles ]
   end
 

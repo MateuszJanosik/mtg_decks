@@ -22,12 +22,12 @@ module CommonModel
         proccess_attr fields
       end
 
-      def column_names
+      def index_column_names
         []
       end
 
       def table_columns
-        column_names.map { |col| { data: col.to_s } }
+        index_column_names.map { |col| { data: col.to_s } }
       end
     end
 

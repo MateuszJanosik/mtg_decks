@@ -19,7 +19,7 @@ class Card < ApplicationRecord
   scope :with_rarity, ->(v) { where(rarity: [ v ].flatten.reject(&:blank?)) }
   scope :with_card_type, ->(v) { where(card_type: [ v ].flatten.reject(&:blank?)) }
 
-  def self.column_names
+  def self.index_column_names
     [ :name, :desc, :colors, :card_type, :rarity ]
   end
 
