@@ -127,6 +127,8 @@ en:
     delete_button: "delete"
     delete_confirmation: "Are you sure?"
     login_to_comment: "You must be logged in to write comments."
+    create_failure: "Failed to add comment: %{errors}"
+    destroy_failure: "Failed to delete comment."
 
   filters:
     filter_button: "Filter"

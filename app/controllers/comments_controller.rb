@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @resource.save
       render turbo_stream: turbo_stream.prepend('comments', partial: 'comments/comment', locals: { comment: @resource })
     else
-      flash.now[:danger] = "Nie udało się dodać komentarza: #{@resource.errors.full_messages.join(', ')}"
+      flash.now[:danger] = t('comments.create_failure', errors: @resource.errors.full_messages.join(', '))
       render turbo_stream: turbo_stream.update('flash', partial: 'layouts/flash'), status: :unprocessable_entity
     end
   end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     if @resource.destroy
       render turbo_stream: turbo_stream.remove("js-comment-#{@resource.id}")
     else
-      flash.now[:danger] = "Nie udało się usunąć komentarza."
+      flash.now[:danger] = t('comments.destroy_failure')
       render turbo_stream: turbo_stream.update('flash', partial: 'layouts/flash'), status: :unprocessable_entity
     end
   end
