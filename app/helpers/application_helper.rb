@@ -4,9 +4,7 @@ module ApplicationHelper
   end
 
   def link_to_resource(resource, opts = {})
-    content_tag :a, href: path_for_resource(resource, opts) do
-      resource.to_s
-    end
+    link_to resource.to_s, path_for_resource(resource, opts)
   end
 
   def render_comments(resource = @resource)

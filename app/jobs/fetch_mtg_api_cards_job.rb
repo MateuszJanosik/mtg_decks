@@ -4,9 +4,7 @@ class FetchMtgApiCardsJob < ApplicationJob
   def perform(sample_size = nil)
     cards = MtgApi::Card.fetch_cards(350, set: "SOI")
     cards = cards.sample(sample_size.to_i) if sample_size
-    cards.each do |card_data|
-      create_card_from_api_data(card_data)
-    end
+    cards.each { |card_data| create_card_from_api_data(card_data) }
   end
 
   private
@@ -30,13 +28,7 @@ class FetchMtgApiCardsJob < ApplicationJob
     return [] if colors.blank?
 
     color_map = { "R" => "red", "G" => "green", "B" => "black", "U" => "blue", "W" => "white" }
-    colors.map do |color|
-      if color.length == 1
-        color_map[color]
-      else
-        color.downcase
-      end
-    end
+    colors.map { |color| color.length == 1 ? color_map[color] : color.downcase }
   end
 
   def map_card_type(card_types)
@@ -52,9 +44,7 @@ class FetchMtgApiCardsJob < ApplicationJob
 
     file = URI.open(image_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
     filename = "card_#{SecureRandom.uuid}.jpg"
-    File.open(Rails.root.join("public", "uploads", filename), "wb") do |f|
-      f.write(file.read)
-    end
+    File.open(Rails.root.join("public", "uploads", filename), "wb") { |f| f.write(file.read) }
     File.open(Rails.root.join("public", "uploads", filename))
   end
 end

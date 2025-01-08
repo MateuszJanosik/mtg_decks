@@ -11,7 +11,7 @@ module CommonController
   end
 
   def resource_class
-    @resource_class ||= controller_name.singularize.camelize.constantize rescue nil
+    @resource_class ||= controller_name.singularize.camelize.safe_constantize
   end
 
   def index
