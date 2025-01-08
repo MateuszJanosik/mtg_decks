@@ -13,14 +13,6 @@ class DecksController < ApplicationController
     @resource.user = current_user
   end
 
-  def callback_after_create
-    @resource.update_colors
-  end
-
-  def callback_after_update
-    @resource.update_colors
-  end
-
   def callback_during_show
     @cards_by_type = @resource.deck_cards.includes(:card).group_by { |e| e.card.card_type }
   end

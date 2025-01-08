@@ -48,6 +48,6 @@ class Card < ApplicationRecord
   end
 
   def update_decks
-    decks.each(&:update_colors) if previous_changes.include?(:colors)
+    decks.each(&:update_colors!) if previous_changes.include?(:colors)
   end
 end

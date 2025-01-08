@@ -18,7 +18,7 @@ FetchMtgApiCardsJob.perform_now(50)
   Card.order('RANDOM()').limit(10).each do |card|
     DeckCard.create!(deck: deck, card: card, amount: 2)
   end
-  deck.update_colors
+  deck.update_colors!
 end
 
 # Create Decks for player
@@ -27,5 +27,5 @@ end
   Card.order('RANDOM()').limit(10).each do |card|
     DeckCard.create!(deck: deck, card: card, amount: 2)
   end
-  deck.update_colors
+  deck.update_colors!
 end

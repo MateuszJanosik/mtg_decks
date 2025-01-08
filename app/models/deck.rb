@@ -8,6 +8,7 @@ class Deck < ApplicationRecord
   has_many :cards, through: :deck_cards
   accepts_nested_attributes_for :deck_cards, reject_if: :all_blank, allow_destroy: true
   before_save :merge_duplicate_deck_cards
+  before_save :recalculate_colors
 
   validates :name, presence: true
   scope :with_colors, ->(v) { where_colors(*[ v ].flatten.reject(&:blank?)) }
@@ -33,12 +34,16 @@ class Deck < ApplicationRecord
     name
   end
 
-  def update_colors
-    self.colors = cards.pluck(:colors).map { |e| Card.colors.to_array(e) }.flatten.uniq
-    self.save
+  def update_colors!
+    recalculate_colors
+    save!
   end
 
   private
+
+  def recalculate_colors
+    self.colors = deck_cards.reject(&:marked_for_destruction?).map { |e| e.card.colors.to_a }.flatten.uniq
+  end
 
   def merge_duplicate_deck_cards
     grouped_cards = deck_cards.group_by(&:card_id)
