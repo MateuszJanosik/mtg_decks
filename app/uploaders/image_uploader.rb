@@ -1,13 +1,14 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
+
   storage :file
 
   version :thumb, from_version: :medium do
-    process resize_to_fill: [105, 150]
+    process resize_to_fill: [ 105, 150 ]
   end
 
   version :medium do
-    process resize_to_fill: [350, 500]
+    process resize_to_fill: [ 350, 500 ]
   end
 
   def store_dir
@@ -15,10 +16,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   def default_url
-    "/images/defaults/#{model.class.to_s.underscore}/" + [version_name, "default.jpg"].compact.join('_')
+    "/images/defaults/#{model.class.to_s.underscore}/#{[ version_name, 'default.jpg' ].compact.join('_')}"
   end
 end

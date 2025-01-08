@@ -1,10 +1,14 @@
 require "role_model"
+
 class User < ApplicationRecord
   include CommonModel
   include RoleModel
+
   attr_normalize_string :username, :email
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   roles_attribute :roles_mask
   roles [ :player, :admin ]
 
