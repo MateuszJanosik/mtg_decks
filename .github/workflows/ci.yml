@@ -39,9 +39,12 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
         run: bin/rails db:setup
 
       - name: Run RSpec tests
+        env:
+          RAILS_ENV: test
         run: bin/rspec
 
       - name: Lint code for consistent style
