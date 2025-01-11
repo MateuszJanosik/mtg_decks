@@ -125,10 +125,16 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.1)
     domain_name (0.6.20240107)
     drb (2.2.1)
     erubi (1.13.1)
     execjs (2.10.0)
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.4)
+      factory_bot (~> 6.5)
+      railties (>= 5.0.0)
     ffi (1.17.1-aarch64-linux-gnu)
     ffi (1.17.1-aarch64-linux-musl)
     ffi (1.17.1-arm-linux-gnu)
@@ -255,6 +261,10 @@ GEM
       activesupport (= 7.2.2.1)
       bundler (>= 1.15.0)
       railties (= 7.2.2.1)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -285,6 +295,23 @@ GEM
       observer (~> 0.1)
       pkg-config (~> 1.4)
     role_model (0.8.2)
+    rspec-core (3.13.2)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (7.1.0)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.2)
     rubocop (1.69.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -409,6 +436,7 @@ DEPENDENCIES
   carrierwave
   cocoon
   devise
+  factory_bot_rails
   globalid
   http
   importmap-rails
@@ -418,9 +446,11 @@ DEPENDENCIES
   pg
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
+  rails-controller-testing
   responders
   rmagick
   role_model
+  rspec-rails
   rubocop-rails-omakase
   sass-rails
   select2-rails
