@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   include CommonController
   responders :collection
-  
+
   def render_datatable
     render json: UserDatatable.new(params)
   end

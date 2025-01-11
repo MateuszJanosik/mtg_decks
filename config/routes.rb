@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   devise_for :users
-  root 'cards#index'
+  root "cards#index"
   resources :cards, :decks
   resources :users, except: :show
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [ :create, :destroy ]
 end

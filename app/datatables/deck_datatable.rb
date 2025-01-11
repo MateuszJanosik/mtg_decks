@@ -2,8 +2,8 @@ class DeckDatatable < AjaxDatatablesRails::ActiveRecord
   def view_columns
     @view_columns ||= {
       name: { source: "Deck.name", cond: :like },
-      colors: { source: "Deck.colors"},
-      user: { source: "Deck.user_id" },
+      colors: { source: "Deck.colors" },
+      user: { source: "Deck.user_id" }
     }
   end
 
@@ -12,7 +12,7 @@ class DeckDatatable < AjaxDatatablesRails::ActiveRecord
       {
         name: record.name_with_link,
         colors: record.colors_s,
-        user: record.user.to_s,
+        user: record.user.to_s
       }
     end
   end

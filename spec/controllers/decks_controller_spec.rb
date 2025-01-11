@@ -34,12 +34,12 @@ RSpec.describe DecksController, type: :controller do
 
       it "allows admin to create a new deck" do
         expect {
-          post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [attributes_for(:deck_card, card_id: card.id)]) }
+          post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [ attributes_for(:deck_card, card_id: card.id) ]) }
         }.to change(Deck, :count).by(1)
       end
 
       it "redirects admin to the deck show page after creation" do
-        post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [attributes_for(:deck_card, card_id: card.id)]) }
+        post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [ attributes_for(:deck_card, card_id: card.id) ]) }
         expect(response).to redirect_to(deck_path(Deck.last))
       end
     end
@@ -64,12 +64,12 @@ RSpec.describe DecksController, type: :controller do
 
       it "allows player to create a new deck" do
         expect {
-          post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [attributes_for(:deck_card, card_id: card.id)]) }
+          post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [ attributes_for(:deck_card, card_id: card.id) ]) }
         }.to change(Deck, :count).by(1)
       end
 
       it "redirects player to the deck show page after creation" do
-        post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [attributes_for(:deck_card, card_id: card.id)]) }
+        post :create, params: { deck: attributes_for(:deck, deck_cards_attributes: [ attributes_for(:deck_card, card_id: card.id) ]) }
         expect(response).to redirect_to(deck_path(Deck.last))
       end
     end

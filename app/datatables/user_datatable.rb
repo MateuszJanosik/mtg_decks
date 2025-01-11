@@ -3,7 +3,7 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||= {
       username: { source: "User.username", cond: :like },
       email: { source: "User.email", cond: :like },
-      roles: { source: "User.roles_mask" },
+      roles: { source: "User.roles_mask" }
     }
   end
 
@@ -12,7 +12,7 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
       {
         username: record.username,
         email: record.email,
-        roles: record.roles.join(', '),
+        roles: record.roles.join(", ")
       }
     end
   end
@@ -20,5 +20,4 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   def get_raw_records
     User.all
   end
-
 end
