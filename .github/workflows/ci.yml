@@ -5,6 +5,12 @@ on:
   push:
     branches: [ main ]
 
+env:
+  CYPRESS_RAILS_TRANSACTIONAL_SERVER: false
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  RAILS_ENV: test
+
 jobs:
   rspec:
     runs-on: ubuntu-latest
@@ -12,8 +18,8 @@ jobs:
       postgres:
         image: postgres:15.8
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         ports:
           - 5432:5432
         options: >-
@@ -36,9 +42,6 @@ jobs:
         run: bundle install
 
       - name: Set up database
-        env:
-          DATABASE_URL: "postgres://postgres@localhost:5432/mtg_decks_test"
-          RAILS_ENV: test
         run: bin/rails db:setup
 
       - name: Run RSpec tests
