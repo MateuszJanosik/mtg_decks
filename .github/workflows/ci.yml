@@ -51,7 +51,7 @@ jobs:
       - name: Run RSpec tests
         env:
           RAILS_ENV: test
-        run: bin/rspec
+        run: bundle exec rspec
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
