@@ -15,6 +15,7 @@ development:
 test:
   <<: *default
   database: mtg_decks_test
+  host: localhost
 
 production:
   <<: *default
