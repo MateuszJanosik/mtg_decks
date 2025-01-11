@@ -6,6 +6,22 @@ on:
     branches: [ main ]
 
 jobs:
+  rspec-and-lint:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15.8
+        env:
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
   scan_ruby:
     runs-on: ubuntu-latest
 
@@ -84,8 +100,10 @@ jobs:
 
       - name: Run tests
         env:
+          CYPRESS_RAILS_TRANSACTIONAL_SERVER: false
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:setup spec
 
       - name: Keep screenshots from failed system tests
