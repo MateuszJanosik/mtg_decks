@@ -37,10 +37,8 @@ jobs:
 
       - name: Set up database
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          DATABASE_URL: "postgres://postgres@localhost:5432/mtg_decks_test"
           RAILS_ENV: test
-          PGHOST: localhost
         run: bin/rails db:setup
 
       - name: Run RSpec tests
