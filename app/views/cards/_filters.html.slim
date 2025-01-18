@@ -1,15 +1,13 @@
 .row
-  .col-md-4
+  .col-md-4.col-12
     .form-group
       = label_tag :with_colors, I18n.t(:with_colors, scope: "activerecord.attributes.card"), required: false
-      = select_tag :with_colors, options_for_select(Card.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control filter-input'
-  .col-md-4
+      = select_tag :with_colors, options_for_select(Card.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control filter-input w-75'
+  .col-md-4.col-12
     .form-group
       = label_tag :with_rarity, I18n.t(:with_rarity, scope: "activerecord.attributes.card"), required: false
-      = select_tag :with_rarity, options_for_select(@resource_class.rarities.keys.map { |e| [@resource_class.human_enum_name(:rarity, e), e] }, filters[:with_rarity]), multiple: true, class: 'js-select2 form-control filter-input'
-  .col-md-4
+      = select_tag :with_rarity, options_for_select(@resource_class.rarities.keys.map { |e| [@resource_class.human_enum_name(:rarity, e), e] }, filters[:with_rarity]), multiple: true, class: 'js-select2 form-control filter-input w-75'
+  .col-md-4.col-12
     .form-group
       = label_tag :with_card_type, I18n.t(:with_card_type, scope: "activerecord.attributes.card"), required: false
-      = select_tag :with_card_type, options_for_select(@resource_class.card_types.keys, filters[:with_card_type]), multiple: true, class: 'js-select2 form-control filter-input'
-  .col-md-2
-    = button_tag I18n.t('filters.reset_button'), type: 'button', class: 'btn btn-secondary reset-filters'
+      = select_tag :with_card_type, options_for_select(@resource_class.card_types.keys, filters[:with_card_type]), multiple: true, class: 'js-select2 form-control filter-input w-75'

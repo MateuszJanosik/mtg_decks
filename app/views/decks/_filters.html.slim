@@ -1,7 +1,9 @@
 .row
-  .col-md-4
+  .col-md-4.col-12
     = label_tag :with_colors, I18n.t(:with_colors, scope: "activerecord.attributes.deck"), required: false
     | &nbsp;
-    = select_tag :with_colors, options_for_select(Deck.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control filter-input'
-  .col-md-2
-    = button_tag I18n.t('filters.reset_button'), type: 'button', class: 'btn btn-secondary reset-filters'
+    = select_tag :with_colors, options_for_select(Deck.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control filter-input w-75'
+  .col-md-4.col-12
+    = label_tag :with_colors, I18n.t(:with_colors, scope: "activerecord.attributes.deck"), required: false
+    | &nbsp;
+    = select_tag :with_colors, options_for_select(Deck.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e] }, filters[:with_colors]), multiple: true, class: 'js-select2 form-control filter-input w-75'
