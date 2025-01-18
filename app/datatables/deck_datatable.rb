@@ -31,7 +31,7 @@ class DeckDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def filtered_colors
-    params.dig(:filters, :with_colors).to_a.compact_blank
+    params.dig(:filters, :with_colors).to_s.split(",")
   end
 
   def filtered_user

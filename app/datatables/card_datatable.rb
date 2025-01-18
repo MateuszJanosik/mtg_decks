@@ -40,14 +40,14 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def filtered_colors
-    params.dig(:filters, :with_colors).to_a.compact_blank
+    params.dig(:filters, :with_colors).to_s.split(",")
   end
 
   def filtered_rarity
-    params.dig(:filters, :with_rarity).to_a.compact_blank
+    params.dig(:filters, :with_rarity).to_s.split(",")
   end
 
   def filtered_card_type
-    params.dig(:filters, :with_card_type).to_a.compact_blank
+    params.dig(:filters, :with_card_type).to_s.split(",")
   end
 end

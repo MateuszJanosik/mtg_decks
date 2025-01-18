@@ -2,16 +2,16 @@
   .mb-4
     .card
       .card-body
-        = form_with url: path_for_resource(@resource_class), method: "GET" do |f|
-          .row
-            .col-md-10
-              - filters = params[:filters].presence.try(:to_unsafe_h) || {}
-              = render partial: 'filters', locals: { f: f, filters: filters }
-            .col-md-2.d-flex.align-items-center.justify-content-end
-              = submit_tag I18n.t('filters.filter_button'), class: "btn btn-primary"
+        .row
+          .col-md-10
+            - filters = params[:filters].presence.try(:to_unsafe_h) || {}
+            = render partial: 'filters', locals: { filters: filters }
+          .col-md-2.d-flex.align-items-center.justify-content-end
+            = button_tag I18n.t('filters.filter_button'), class: "btn btn-primary apply-filters"
 table.datatable style="width:100%" class="mt-4" data-url="#{path_for_resource(@resource_class, format: :json, filters: params[:filters].try(:to_unsafe_h))}" data-columns="#{@resource_class.table_columns.to_json}"
   thead
     tr
       - @resource_class.index_column_names.each do |col|
         th
           = I18n.t(col, scope: "activerecord.attributes.#{@resource_class.to_s.downcase}")
+
