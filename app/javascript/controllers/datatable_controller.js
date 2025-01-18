@@ -12,6 +12,7 @@ export default class extends Controller {
     const table = this.element;
     if ($.fn.DataTable.isDataTable(table)) {
       this.dataTable = $(table).DataTable();
+      this.resetFilterInputs();
       return;
     }
     const ajaxUrl = table.dataset.url;
@@ -22,6 +23,14 @@ export default class extends Controller {
       ajax: ajaxUrl,
       columns: columns,
       responsive: true
+    });
+  }
+
+  resetFilterInputs() {
+    document.querySelectorAll('.filter-input').forEach(input => {
+      input.value = null;
+      const event = new Event('change');
+      input.dispatchEvent(event);
     });
   }
 
@@ -50,11 +59,7 @@ export default class extends Controller {
   }
 
   resetFilters() {
-    document.querySelectorAll('.filter-input').forEach(input => {
-      input.value = null;
-      const event = new Event('change');
-      input.dispatchEvent(event);
-    });
+    this.resetFilterInputs();
     const table = this.element;
     this.dataTable.ajax.url(table.dataset.url).load();
   }
