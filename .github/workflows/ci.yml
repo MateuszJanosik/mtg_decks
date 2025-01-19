@@ -33,14 +33,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install ImageMagick
+        run: sudo apt-get install -y libmagickwand-dev
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
-      - name: Install ImageMagick
-        run: sudo apt-get install -y libmagickwand-dev
 
       - name: Install dependencies
         run: bundle install
