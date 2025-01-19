@@ -230,7 +230,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
-    pkg-config (1.5.8)
+    pkg-config (1.5.9)
     popper_js (2.11.8)
     psych (5.2.2)
       date
@@ -290,7 +290,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.0)
-    rmagick (5.5.0)
+    rmagick (6.1.0)
       observer (~> 0.1)
       pkg-config (~> 1.4)
     role_model (0.8.2)
