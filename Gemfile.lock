@@ -290,7 +290,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.0)
-    rmagick (6.0.1)
+    rmagick (5.5.0)
       observer (~> 0.1)
       pkg-config (~> 1.4)
     role_model (0.8.2)
@@ -446,7 +446,7 @@ DEPENDENCIES
   rails (~> 7.2.2, >= 7.2.2.1)
   rails-controller-testing
   responders
-  rmagick
+  rmagick (~> 5.5)
   role_model
   rspec-rails
   rubocop-rails-omakase
