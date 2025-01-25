@@ -10,7 +10,7 @@ code highlights:
 
 ## How to run the application
 
-This project uses **Rails 7.2** and **Ruby 3.4**.
+This project uses **Rails 7.2**, **Ruby 3.4** and **Postgresql**.
 
 1. **Clone the repository:**
     ```sh
@@ -49,7 +49,11 @@ This project uses **Rails 7.2** and **Ruby 3.4**.
     rails db:migrate
     rails db:seed
     ```
-    when you run db:seed it downloads MTG card data from the API and creates cards with images in the database, so it may take a minute.
+    When you run db:seed it downloads MTG card data from the API and creates cards with images in the database, so it may take a minute.
+    
+    The seed file also creates two sample user profiles:
+    - Admin user: `admin@example.com` with password `password`
+    - Player user: `player@example.com` with password `password`
 
 6. **Start Redis server:**
     ```sh

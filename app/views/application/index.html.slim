@@ -4,8 +4,7 @@
       .card-body
         .row
           .col-12
-            - filters = params[:filters].presence.try(:to_unsafe_h) || {}
-            = render partial: 'filters', locals: { filters: filters }
+            = render partial: 'filters'
         .row.mt-2
           .col-12.d-flex.align-items-center.justify-content-start
             .d-flex.flex-wrap.justify-content-start
