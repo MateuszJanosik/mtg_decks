@@ -54,6 +54,9 @@ gem "devise"
 gem "cancancan"
 gem "role_model"
 
+# Background job processing
+gem 'sidekiq'
+
 # Miscellaneous
 gem "active_flag"
 gem "ajax-datatables-rails"

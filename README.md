@@ -33,7 +33,17 @@ This project uses **Rails 7.2** and **Ruby 3.4**.
     sudo apt-get install imagemagick libmagickwand-dev
     ```
 
-4. **Set up the database:**
+4. **Install Redis:**
+    On macOS:
+    ```sh
+    brew install redis
+    ```
+    On Ubuntu:
+    ```sh
+    sudo apt-get install redis-server
+    ```
+
+5. **Set up the database:**
     ```sh
     rails db:create
     rails db:migrate
@@ -41,12 +51,22 @@ This project uses **Rails 7.2** and **Ruby 3.4**.
     ```
     when you run db:seed it downloads MTG card data from the API and creates cards with images in the database, so it may take a minute.
 
-5. **Run the Rails server:**
+6. **Start Redis server:**
+    ```sh
+    redis-server
+    ```
+
+7. **Start Sidekiq:**
+    ```sh
+    bundle exec sidekiq
+    ```
+
+8. **Run the Rails server:**
     ```sh
     rails server
     ```
 
-6. **Open your browser and navigate to:**
+9. **Open your browser and navigate to:**
     ```
     http://localhost:3000
     ```
