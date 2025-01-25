@@ -33,6 +33,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Update package lists
+        run: sudo apt-get update
+
       - name: Install ImageMagick
         run: sudo apt-get install -y libmagickwand-dev
 
@@ -63,6 +66,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Update package lists
+        run: sudo apt-get update
+
       - name: Install ImageMagick
         run: sudo apt-get install -y libmagickwand-dev
 
@@ -82,6 +88,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Update package lists
+        run: sudo apt-get update
+
       - name: Install ImageMagick
         run: sudo apt-get install -y libmagickwand-dev
 
@@ -100,6 +109,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Update package lists
+        run: sudo apt-get update
 
       - name: Install ImageMagick
         run: sudo apt-get install -y libmagickwand-dev
