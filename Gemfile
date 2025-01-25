@@ -55,7 +55,7 @@ gem "cancancan"
 gem "role_model"
 
 # Background job processing
-gem 'sidekiq'
+gem "sidekiq"
 
 # Miscellaneous
 gem "active_flag"

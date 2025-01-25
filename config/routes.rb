@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 
   # Health check endpoint
   get "up" => "rails/health#show", as: :rails_health_check
