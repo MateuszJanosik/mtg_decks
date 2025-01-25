@@ -1,66 +1,69 @@
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+ruby "3.4.1"
+
+# Rails framework
 gem "rails", "~> 7.2.2", ">= 7.2.2.1"
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+
+# Asset pipeline
 gem "sprockets-rails"
-# Use sqlite3 as the database for Active Record
+
+# Database
 gem "sqlite3", ">= 1.4"
-# Use the Puma web server [https://github.com/puma/puma]
+gem "pg"
+
+# Web server
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+
+# JavaScript
 gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+
+# JSON APIs
 gem "jbuilder"
-# Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Time zone data for Windows
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Reduces boot times through caching; required in config/boot.rb
+# Performance
 gem "bootsnap", require: false
 
+# Templating
 gem "slim"
-gem "active_flag"
+
+# Form handling
 gem "simple_form"
-gem "jquery-rails"
-gem "ajax-datatables-rails"
-gem "responders"
+gem "cocoon"
+
+# File uploads
 gem "carrierwave"
 gem "rmagick"
+
+# Frontend
+gem "jquery-rails"
 gem "select2-rails"
+gem "bootstrap", "~> 5.3"
+gem "sass-rails"
+
+# HTTP client
+gem "http"
+
+# Authentication and authorization
 gem "devise"
 gem "cancancan"
 gem "role_model"
-gem "cocoon"
+
+# Miscellaneous
+gem "active_flag"
+gem "ajax-datatables-rails"
+gem "responders"
 gem "globalid"
-gem "bootstrap", "~> 5.3"
-gem "sass-rails"
-gem "http"
-gem "pg"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
+# Development and test
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [ :mri, :mingw, :x64_mingw ]
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   gem "factory_bot_rails"
   gem "rspec-rails"
@@ -68,12 +71,10 @@ group :development, :test do
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
 end
