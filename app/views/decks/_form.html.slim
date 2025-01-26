@@ -6,7 +6,7 @@
       .deck-card-fields style="margin-bottom: 10px;"
         = render 'deck_card_fields', f: p
     .pull-right.mr5 style="margin-top: 10px;"
-      = link_to_add_association "dodaj kartę", f, :deck_cards, class: "btn btn-primary"
+      = link_to_add_association t('actions.add_card'), f, :deck_cards, class: "btn btn-primary"
   hr
   .pull-right
     = f.button :submit, class: "btn btn-success"

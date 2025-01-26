@@ -4,6 +4,7 @@ Simple app for creating Magic the Gathering decks.
 
 code highlights:
 - stimulus controller with datatables with filtering
+- view components for datatables
 - simple MTG API client to get card data
 - CommonController - a way to create new controllers with minimal configuration
 - PathGenerator PORO - a helper to create url based on a passed object (for DRY purposes)

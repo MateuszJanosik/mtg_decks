@@ -43,18 +43,18 @@ export default class extends Controller {
     event.preventDefault();
     const table = this.element;
     const url = new URL(table.dataset.url, window.location.origin);
-    const filters = new URLSearchParams();
+    const filters = this.extractFiltersFromUrl(url);
 
+    // Add filters from input fields
     document.querySelectorAll('.filter-input').forEach(input => {
       const inputId = input.dataset.select2Id;
       const value = input.value;
       if (value) {
-        filters.append(`filters[${inputId}]`, value);
+        filters.set(`filters[${inputId}]`, value);
       }
     });
 
     url.search = filters.toString();
-
     this.dataTable.ajax.url(url.toString()).load();
   }
 
@@ -62,5 +62,18 @@ export default class extends Controller {
     this.resetFilterInputs();
     const table = this.element;
     this.dataTable.ajax.url(table.dataset.url).load();
+  }
+
+  extractFiltersFromUrl(url) {
+    const filters = new URLSearchParams(url.search);
+
+    // Remove non-filter parameters
+    filters.forEach((value, key) => {
+      if (!key.startsWith('filters[')) {
+        filters.delete(key);
+      }
+    });
+
+    return filters;
   }
 }

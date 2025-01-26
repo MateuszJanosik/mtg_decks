@@ -115,6 +115,7 @@ en:
     delete_confirmation: "Are you sure?"
     new: "New"
     sure: "Are you sure?"
+    add_card: "Add card"
 
   session:
     logout: "Logout"
