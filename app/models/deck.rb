@@ -23,10 +23,6 @@ class Deck < ApplicationRecord
     [ :name, :colors, :user ]
   end
 
-  def self.filters_enabled?
-    true
-  end
-
   def colors_s
     colors.map { |c| I18n.t(c, scope: "common.colors_values") }.join(", ")
   end

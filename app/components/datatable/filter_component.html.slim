@@ -1,0 +1,4 @@
+.form-group
+  = label_tag name, I18n.t(name, scope: "activerecord.attributes.#{resource_class.to_s.downcase}"), required: false
+  .select2
+    = select_tag name, options_for_select(collection), multiple: multiple, class: "js-select2 form-control filter-input w-75"

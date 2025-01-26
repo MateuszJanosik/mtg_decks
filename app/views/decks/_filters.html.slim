@@ -1,5 +1,1 @@
-.row
-  .col-md-4.col-12
-    = label_tag :with_colors, I18n.t(:with_colors, scope: "activerecord.attributes.deck"), required: false
-    | &nbsp;
-    = select_tag :with_colors, options_for_select(Deck.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e] }), multiple: true, class: 'js-select2 form-control filter-input w-75'
+= datatable.with_filter(name: :with_colors, collection: @resource_class.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.deck.colors_values"), e] }, multiple: true, resource_class: @resource_class)

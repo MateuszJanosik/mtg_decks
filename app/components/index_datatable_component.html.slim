@@ -1,0 +1,16 @@
+- if filters.any?
+  .mb-4
+    .card
+      .card-body
+        .row
+          .col-12
+            .row
+              - filters.each do |filter|
+                .col-md-4.col-12
+                  = render filter
+        .row.mt-2
+          .col-12.d-flex.align-items-center.justify-content-start
+            .d-flex.flex-wrap.justify-content-start
+              = button_tag I18n.t('filters.filter_button'), class: "btn btn-primary apply-filters me-2"
+              = button_tag I18n.t('filters.reset_button'), class: "btn btn-secondary reset-filters"
+= render table

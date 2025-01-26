@@ -2,10 +2,6 @@ module CommonModel
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def filters_enabled?
-      false
-    end
-
     def process_attr(*args)
       args.flatten!
       attr_fields = args.reject { |e| e.is_a?(Proc) }

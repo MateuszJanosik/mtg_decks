@@ -39,10 +39,6 @@ class Card < ApplicationRecord
     name
   end
 
-  def self.filters_enabled?
-    true
-  end
-
   def update_card_decks
     deck_cards.update_all(card_name: name) if previous_changes.include?(:name)
   end

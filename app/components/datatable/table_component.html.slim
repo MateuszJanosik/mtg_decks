@@ -1,0 +1,6 @@
+table.datatable style="width:100%" class="mt-4" data-controller="datatable" data-url="#{path_for_resource(resource_class, format: :json)}" data-columns="#{resource_class.table_columns.to_json}"
+  thead
+    tr
+      - resource_class.index_column_names.each do |col|
+        th
+          = I18n.t(col, scope: "activerecord.attributes.#{resource_class.to_s.downcase}")

@@ -1,13 +1,3 @@
-.row
-  .col-md-4.col-12
-    .form-group
-      = label_tag :with_colors, I18n.t(:with_colors, scope: "activerecord.attributes.card"), required: false
-      = select_tag :with_colors, options_for_select(Card.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e] }), multiple: true, class: 'js-select2 form-control filter-input w-75'
-  .col-md-4.col-12
-    .form-group
-      = label_tag :with_rarity, I18n.t(:with_rarity, scope: "activerecord.attributes.card"), required: false
-      = select_tag :with_rarity, options_for_select(@resource_class.rarities.keys.map { |e| [@resource_class.human_enum_name(:rarity, e), e] }), multiple: true, class: 'js-select2 form-control filter-input w-75'
-  .col-md-4.col-12
-    .form-group
-      = label_tag :with_card_type, I18n.t(:with_card_type, scope: "activerecord.attributes.card"), required: false
-      = select_tag :with_card_type, options_for_select(@resource_class.card_types.keys), multiple: true, class: 'js-select2 form-control filter-input w-75'
+= datatable.with_filter(name: :with_colors, collection: @resource_class.colors.keys.map { |e| [I18n.t(e, scope: "activerecord.attributes.card.colors_values"), e] }, multiple: true, resource_class: @resource_class)
+= datatable.with_filter(name: :with_rarity, collection: @resource_class.rarities.keys.map { |e| [@resource_class.human_enum_name(:rarity, e), e] }, multiple: true, resource_class: @resource_class)
+= datatable.with_filter(name: :with_card_type, collection: @resource_class.card_types.keys, multiple: true, resource_class: @resource_class)

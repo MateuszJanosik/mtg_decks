@@ -45,6 +45,7 @@ gem "jquery-rails"
 gem "select2-rails"
 gem "bootstrap", "~> 5.3"
 gem "sass-rails"
+gem "view_component", "~> 3.21"
 
 # HTTP client
 gem "http"
