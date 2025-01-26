@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.4.1"
 
 # Rails framework
-gem "rails", "~> 7.2.2", ">= 7.2.2.1"
+gem "rails", "~> 8.0.1"
 
 # Asset pipeline
 gem "sprockets-rails"
